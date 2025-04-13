@@ -1,0 +1,47 @@
+{
+  "name": "@silentsheet/core",
+  "version": "0.1.1",
+  "description": "a quiet space to write.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^4.9.5"
+  },
+  "keywords": [
+    "notepad",
+    "editor",
+    "minimal",
+    "component",
+    "typescript"
+  ],
+  "author": "Hamza Saleem",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamzasaleem2/silentsheet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hamzasaleem2/silentsheet/issues"
+  },
+  "homepage": "https://github.com/hamzasaleem2/silentsheet#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}

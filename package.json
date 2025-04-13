@@ -1,0 +1,30 @@
+{
+  "name": "silentsheet",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "a quiet space to write.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm run build:core && pnpm run build:react",
+    "build:core": "pnpm --filter @silentsheet/core run build",
+    "build:react": "pnpm --filter @silentsheet/react run build",
+    "clean": "rm -rf node_modules && rm -rf packages/*/node_modules"
+  },
+  "keywords": [
+    "notepad",
+    "editor",
+    "minimal",
+    "react",
+    "component"
+  ],
+  "author": "Hamza Saleem",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "@types/node": "^20.0.0",
+    "tsup": "^8.0.0"
+  }
+}

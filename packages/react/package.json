@@ -1,0 +1,59 @@
+{
+  "name": "@silentsheet/react",
+  "version": "0.1.1",
+  "description": "a quiet space to write",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/index.css": "./dist/index.css"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "dependencies": {
+    "@silentsheet/core": "workspace:*",
+    "react-icons": "^4.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "postcss": "^8.4.21",
+    "tsup": "^8.0.0",
+    "typescript": "^4.9.5"
+  },
+  "keywords": [
+    "react",
+    "notepad",
+    "editor",
+    "minimal",
+    "component",
+    "typescript"
+  ],
+  "author": "Hamza Saleem",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamzasaleem2/silentsheet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hamzasaleem2/silentsheet/issues"
+  },
+  "homepage": "https://github.com/hamzasaleem2/silentsheet#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}

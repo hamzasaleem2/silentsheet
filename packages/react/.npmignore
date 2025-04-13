@@ -1,0 +1,18 @@
+# source
+src/
+tsconfig.json
+tsup.config.ts
+
+# development
+node_modules/
+.DS_Store
+
+# tests
+__tests__/
+*.test.*
+*.spec.*
+
+# misc
+.gitignore
+.npmrc
+*.log 
