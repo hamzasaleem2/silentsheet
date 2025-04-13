@@ -2,6 +2,10 @@
 
 a quiet space to write. a minimalist text editor component for the web. no noise, no chrome, just words on a page.
 
+[![npm version](https://img.shields.io/npm/v/@silentsheet/react.svg)](https://www.npmjs.com/package/@silentsheet/react)
+[![npm downloads](https://img.shields.io/npm/dm/@silentsheet/react.svg)](https://www.npmjs.com/package/@silentsheet/react)
+[![License](https://img.shields.io/npm/l/@silentsheet/react.svg)](https://github.com/hamzasaleem2/silentsheet/blob/main/LICENSE)
+
 ## features
 
 - minimal toolbar that appears on hover
@@ -19,8 +23,8 @@ a quiet space to write. a minimalist text editor component for the web. no noise
 
 this repository is a monorepo containing two packages:
 
-- [@silentsheet/core](packages/core) - core functionality and state management
-- [@silentsheet/react](packages/react) - react component with beautiful UI
+- [@silentsheet/core](https://www.npmjs.com/package/@silentsheet/core) [![npm version](https://img.shields.io/npm/v/@silentsheet/core.svg)](https://www.npmjs.com/package/@silentsheet/core) - core functionality and state management
+- [@silentsheet/react](https://www.npmjs.com/package/@silentsheet/react) [![npm version](https://img.shields.io/npm/v/@silentsheet/react.svg)](https://www.npmjs.com/package/@silentsheet/react) - react component with beautiful UI
 
 ## quick start
 
