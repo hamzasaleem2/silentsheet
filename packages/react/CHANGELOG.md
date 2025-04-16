@@ -1,5 +1,10 @@
 # changelog
 
+## 0.1.3
+
+### fixes
+- fixed dependency on @silentsheet/core to use proper version instead of workspace reference
+
 ## 0.1.2
 
 ### fixes
