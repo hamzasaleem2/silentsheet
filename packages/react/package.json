@@ -1,6 +1,6 @@
 {
   "name": "@silentsheet/react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "a quiet space to write",
   "type": "module",
   "exports": {
@@ -19,7 +19,9 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "test:dev": "vite dev/",
+    "test:build": "vite build dev/"
   },
   "peerDependencies": {
     "react": "^18.0.0",
@@ -31,9 +33,11 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
+    "@vitejs/plugin-react": "^4.2.1",
     "postcss": "^8.4.21",
     "tsup": "^8.0.0",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vite": "^5.0.12"
   },
   "keywords": [
     "react",

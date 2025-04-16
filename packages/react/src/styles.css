@@ -225,19 +225,16 @@
 
 /* Theme-specific styles */
 .silentsheet-root[data-theme="light"] .select,
-.silentsheet-root[data-theme="light"] .range,
 .silentsheet-root[data-theme="light"] .icon-button {
   background-color: var(--bg-color);
 }
 
 .silentsheet-root[data-theme="sepia"] .select,
-.silentsheet-root[data-theme="sepia"] .range,
 .silentsheet-root[data-theme="sepia"] .icon-button {
   background-color: var(--bg-color);
 }
 
 .silentsheet-root[data-theme="night"] .select,
-.silentsheet-root[data-theme="night"] .range,
 .silentsheet-root[data-theme="night"] .icon-button {
   background-color: var(--bg-color);
 }

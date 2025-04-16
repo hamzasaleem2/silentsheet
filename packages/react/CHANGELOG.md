@@ -1,5 +1,10 @@
 # changelog
 
+## 0.1.2
+
+### fixes
+- fixed range slider track background visibility in all themes
+
 ## 0.1.1
 
 ### fixes

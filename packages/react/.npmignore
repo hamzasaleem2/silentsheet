@@ -6,6 +6,7 @@ tsup.config.ts
 # development
 node_modules/
 .DS_Store
+dev/
 
 # tests
 __tests__/
