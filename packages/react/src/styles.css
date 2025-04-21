@@ -447,3 +447,7 @@
     right: 8px;
   }
 }
+
+.textarea.hemingway-mode {
+  caret-color: #e74c3c;
+}

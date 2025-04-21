@@ -114,7 +114,7 @@ export const SilentSheet: React.FC<SilentSheetProps> = ({
         </a>
         <textarea
           ref={textareaRef}
-          className="textarea"
+          className={`textarea ${uiState.hemingwayMode ? 'hemingway-mode' : ''}`}
           style={{
             fontFamily: uiState.font,
             fontSize: `${uiState.fontSize}px`
@@ -122,7 +122,36 @@ export const SilentSheet: React.FC<SilentSheetProps> = ({
           defaultValue={uiState.content}
           onChange={handleContentChange}
           onBlur={handleContentBlur}
-          placeholder={placeholder}
+          onKeyDown={e => {
+            if (uiState.hemingwayMode) {
+              const textarea = e.target as HTMLTextAreaElement;
+              const cursorPosition = textarea.selectionStart;
+              const selectionEnd = textarea.selectionEnd;
+              
+              if (cursorPosition === selectionEnd) {
+                if (e.key === 'Backspace') {
+                  const lines = textarea.value.split('\n');
+                  let currentPos = 0;
+                  let currentLineEnd = 0;
+                  
+                  for (const line of lines) {
+                    currentLineEnd = currentPos + line.length;
+                    if (currentPos <= cursorPosition && cursorPosition <= currentLineEnd) {
+                      if (cursorPosition > currentPos) {
+                        return;
+                      }
+                      break;
+                    }
+                    currentPos = currentLineEnd + 1;
+                  }
+                  e.preventDefault();
+                }
+              } else {
+                e.preventDefault();
+              }
+            }
+          }}
+          placeholder={uiState.hemingwayMode ? "Write freely. Each line is a fresh start..." : placeholder}
           spellCheck={false}
           autoComplete="off"
           autoCorrect="off"
@@ -138,6 +167,23 @@ export const SilentSheet: React.FC<SilentSheetProps> = ({
             >
               {formatTime(uiState.timerSeconds)}
             </button>
+            <select
+              className="select"
+              value={uiState.hemingwayMode ? "hemingway" : "edit"}
+              onChange={e => {
+                if ((e.target.value === "hemingway") !== uiState.hemingwayMode) {
+                  actions.toggleHemingwayMode();
+                }
+              }}
+              title={uiState.hemingwayMode ? "Hemingway Mode: Write forward, no looking back" : "Edit Mode: Free editing"}
+              style={{
+                '--bg-color': backgrounds[uiState.theme],
+                '--text-color': uiState.theme === 'night' ? '#ffffff' : '#000000'
+              } as React.CSSProperties}
+            >
+              <option value="edit">Edit</option>
+              <option value="hemingway">Hemingway</option>
+            </select>
             <select
               className="select"
               value={uiState.font}
