@@ -1,5 +1,14 @@
 # @silentsheet/react
 
+## [0.2.1]
+
+### Fixed
+- Enhanced Hemingway mode protection against editing previous lines
+  - Added robust content validation to prevent modifications
+  - Improved mouse interaction blocking
+  - Fixed rapid interaction edge cases
+  - Added multiple timing mechanisms for reliable cursor positioning
+
 ## [0.2.0]
 
 ### Added

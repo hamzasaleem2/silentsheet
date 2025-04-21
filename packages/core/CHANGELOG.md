@@ -1,5 +1,10 @@
 # @silentsheet/core
 
+## [0.2.1]
+
+### Changed
+- Version bump to align with React package improvements
+
 ## [0.2.0]
 
 ### Added

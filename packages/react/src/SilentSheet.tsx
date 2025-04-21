@@ -58,13 +58,29 @@ export const SilentSheet: React.FC<SilentSheetProps> = ({
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
+    
+    if (uiState.hemingwayMode) {
+      const textarea = e.target;
+      const lines = textarea.value.split('\n');
+      const prevLines = uiState.content.split('\n');
+      
+      // Check if any previous lines were modified
+      for (let i = 0; i < prevLines.length - 1; i++) {
+        if (i < lines.length && lines[i] !== prevLines[i]) {
+          // Revert the change
+          textarea.value = uiState.content;
+          return;
+        }
+      }
+    }
+    
     const text = e.target.value;
     updateStats(text);
     onChange?.(text);
     timeoutRef.current = setTimeout(() => {
       saveContent(text);
     }, 1000);
-  }, [saveContent, updateStats, onChange]);
+  }, [saveContent, updateStats, onChange, uiState.hemingwayMode, uiState.content]);
 
   useEffect(() => {
     updateStats(uiState.content);
@@ -148,6 +164,67 @@ export const SilentSheet: React.FC<SilentSheetProps> = ({
                 }
               } else {
                 e.preventDefault();
+              }
+            }
+          }}
+          onMouseDown={e => {
+            if (uiState.hemingwayMode) {
+              const textarea = e.target as HTMLTextAreaElement;
+              const clickPosition = textarea.selectionStart;
+              const lines = textarea.value.split('\n');
+              let currentPos = 0;
+              
+              // Find the last line's starting position
+              for (let i = 0; i < lines.length - 1; i++) {
+                currentPos += lines[i].length + 1;
+              }
+              
+              // If click is before the last line, prevent it
+              if (clickPosition < currentPos) {
+                e.preventDefault();
+                e.stopPropagation();
+                // Force cursor to the end
+                setTimeout(() => {
+                  textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+                }, 0);
+              }
+            }
+          }}
+          onClick={e => {
+            if (uiState.hemingwayMode) {
+              const textarea = e.target as HTMLTextAreaElement;
+              const clickPosition = textarea.selectionStart;
+              const lines = textarea.value.split('\n');
+              let currentPos = 0;
+              
+              for (let i = 0; i < lines.length - 1; i++) {
+                currentPos += lines[i].length + 1;
+              }
+              
+              if (clickPosition < currentPos) {
+                e.preventDefault();
+                e.stopPropagation();
+                textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+              }
+            }
+          }}
+          onSelect={e => {
+            if (uiState.hemingwayMode) {
+              const textarea = e.target as HTMLTextAreaElement;
+              const selectionStart = textarea.selectionStart;
+              const lines = textarea.value.split('\n');
+              let currentPos = 0;
+              
+              for (let i = 0; i < lines.length - 1; i++) {
+                currentPos += lines[i].length + 1;
+              }
+              
+              if (selectionStart < currentPos) {
+                e.preventDefault();
+                e.stopPropagation();
+                requestAnimationFrame(() => {
+                  textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+                });
               }
             }
           }}

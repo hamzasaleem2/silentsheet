@@ -1,6 +1,6 @@
 {
   "name": "@silentsheet/react",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React component for silentsheet.",
   "type": "module",
   "exports": {
@@ -28,7 +28,7 @@
     "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "@silentsheet/core": "^0.2.0",
+    "@silentsheet/core": "^0.2.1",
     "react-icons": "^4.8.0"
   },
   "devDependencies": {
