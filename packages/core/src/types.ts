@@ -9,6 +9,7 @@ export interface UIState {
   size: Size;
   timerRunning: boolean;
   timerSeconds: number;
+  hemingwayMode: boolean;
 }
 
 export interface SilentSheetState extends UIState {
@@ -25,6 +26,7 @@ export interface SilentSheetActions {
   clearContent: () => void;
   toggleTimer: () => void;
   resetTimer: () => void;
+  toggleHemingwayMode: () => void;
 }
 
 export interface SilentSheetAPI {

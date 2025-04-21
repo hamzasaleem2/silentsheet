@@ -10,7 +10,8 @@ const DEFAULT_OPTIONS: SilentSheetState = {
   theme: 'sepia',
   size: 'medium',
   timerRunning: false,
-  timerSeconds: INITIAL_TIMER_SECONDS
+  timerSeconds: INITIAL_TIMER_SECONDS,
+  hemingwayMode: false
 };
 
 export class SilentSheet implements SilentSheetAPI {
@@ -25,7 +26,6 @@ export class SilentSheet implements SilentSheetAPI {
       ...DEFAULT_OPTIONS,
       ...savedState,
       ...initialState,
-      // Always reset timer state on initialization
       timerRunning: false,
       timerSeconds: INITIAL_TIMER_SECONDS
     };
@@ -44,7 +44,6 @@ export class SilentSheet implements SilentSheetAPI {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
     } catch {
-      // Ignore storage errors
     }
   }
 
@@ -77,7 +76,25 @@ export class SilentSheet implements SilentSheetAPI {
   getActions(): SilentSheetActions {
     return {
       setContent: (content: string) => {
-        this.state.content = content;
+        if (this.state.hemingwayMode) {
+          const lines = this.state.content.split('\n');
+          const newLines = content.split('\n');
+          
+          if (newLines.length >= lines.length) {
+            const isValid = lines.every((line, index) => {
+              if (index === lines.length - 1) return true;
+              return newLines[index] === line;
+            });
+            
+            if (isValid) {
+              this.state.content = content;
+              this.saveState();
+            }
+          }
+        } else {
+          this.state.content = content;
+          this.saveState();
+        }
         this.notifySubscribers();
       },
       setFont: (font: Font) => {
@@ -110,12 +127,10 @@ export class SilentSheet implements SilentSheetAPI {
       },
       toggleTimer: () => {
         if (this.state.timerRunning) {
-          // If running, stop and reset
           this.stopTimer();
           this.state.timerRunning = false;
           this.state.timerSeconds = INITIAL_TIMER_SECONDS;
         } else {
-          // If stopped, start
           this.state.timerRunning = true;
           this.startTimer();
         }
@@ -125,6 +140,11 @@ export class SilentSheet implements SilentSheetAPI {
         this.stopTimer();
         this.state.timerRunning = false;
         this.state.timerSeconds = INITIAL_TIMER_SECONDS;
+        this.notifySubscribers();
+      },
+      toggleHemingwayMode: () => {
+        this.state.hemingwayMode = !this.state.hemingwayMode;
+        this.saveState();
         this.notifySubscribers();
       }
     };

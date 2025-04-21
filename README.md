@@ -9,6 +9,7 @@ a quiet space to write. a minimalist text editor component for the web. no noise
 ## features
 
 - minimal toolbar that appears on hover
+- hemingway mode for distraction-free forward writing
 - three beautiful themes (light, sepia, night)
 - three font families (serif, sans-serif, monospace)
 - four sizes (small: 50%, medium: 75%, large: 90%, full: 100%)
@@ -18,6 +19,20 @@ a quiet space to write. a minimalist text editor component for the web. no noise
 - automatic content saving
 - fully responsive design
 - typescript support
+
+## writing modes
+
+silentsheet offers two writing modes:
+
+### edit mode (default)
+- full editing capabilities
+- perfect for revision and refinement
+
+### hemingway mode
+- encourages forward momentum in writing
+- prevents editing of previous lines
+- helps maintain flow and reduce self-editing
+- ideal for first drafts and stream of consciousness writing
 
 ## packages
 
