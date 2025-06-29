@@ -11,7 +11,11 @@
     "build": "pnpm run build:core && pnpm run build:react",
     "build:core": "pnpm --filter @silentsheet/core run build",
     "build:react": "pnpm --filter @silentsheet/react run build",
-    "clean": "rm -rf node_modules && rm -rf packages/*/node_modules"
+    "clean": "rm -rf node_modules && rm -rf packages/*/node_modules",
+    "dev": "concurrently \"pnpm:dev:core\" \"pnpm:dev:react\" \"pnpm:dev:vite\"",
+    "dev:core": "pnpm --filter @silentsheet/core run dev",
+    "dev:react": "pnpm --filter @silentsheet/react run dev",
+    "dev:vite": "pnpm --filter @silentsheet/react run test:dev"
   },
   "keywords": [
     "notepad",
@@ -23,8 +27,9 @@
   "author": "Hamza Saleem",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^4.9.5",
     "@types/node": "^20.0.0",
-    "tsup": "^8.0.0"
+    "concurrently": "^9.2.0",
+    "tsup": "^8.0.0",
+    "typescript": "^4.9.5"
   }
 }
